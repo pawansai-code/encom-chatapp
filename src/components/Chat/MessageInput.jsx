@@ -81,7 +81,7 @@ const MessageInput = () => {
     };
 
     return (
-        <div className="p-3 w-100 border-top border-secondary border-opacity-25 bg-dark bg-opacity-25 backdrop-blur-sm">
+        <div className="p-3 w-100 border-top border-white border-opacity-10" style={{ background: "rgba(5, 5, 10, 0.4)", backdropFilter: "blur(10px)" }}>
             {imagePreview && (
                 <div className="mb-3 d-flex align-items-center gap-2">
                     <div className="position-relative">
@@ -93,8 +93,8 @@ const MessageInput = () => {
                         />
                         <button
                             onClick={removeImage}
-                            className="position-absolute top-0 end-0 translate-middle btn btn-sm btn-dark rounded-circle p-0 d-flex align-items-center justify-content-center"
-                            style={{ width: "20px", height: "20px" }}
+                            className="position-absolute top-0 end-0 translate-middle btn btn-sm rounded-circle p-0 d-flex align-items-center justify-content-center"
+                            style={{ width: "20px", height: "20px", background: "#ff2e63", color: "white", border: "none" }}
                             type="button"
                         >
                             <X size={12} />
@@ -107,10 +107,11 @@ const MessageInput = () => {
                 <div className="flex-grow-1 position-relative">
                   <input
                     type="text"
-                    className="form-control rounded-pill input-glass py-2 px-4" 
+                    className="form-control rounded-pill input-glass py-2 px-4 shadow-none" 
                     placeholder="Type a message..."
                     value={text}
                     onChange={handleInput}
+                    style={{ color: "white", background: "rgba(255, 255, 255, 0.05)", borderColor: "rgba(255, 255, 255, 0.1)" }}
                   />
                   <input
                     type="file"
@@ -121,16 +122,24 @@ const MessageInput = () => {
                   />
                   <button
                     type="button"
-                    className={`position-absolute top-50 end-0 translate-middle-y btn btn-link text-secondary me-2 ${imagePreview ? "text-success" : ""}`}
+                    className={`position-absolute top-50 end-0 translate-middle-y btn btn-link me-2 ${imagePreview ? "text-success" : ""}`}
                     onClick={() => fileInputRef.current?.click()}
+                    style={{ color: "rgba(255, 255, 255, 0.5)" }}
                   >
                     <Image size={20} />
                   </button>
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-primary rounded-circle p-2 d-flex align-items-center justify-content-center"
-                  style={{ width: "45px", height: "45px", backgroundColor: "var(--primary)" }}
+                  className="btn rounded-circle p-2 d-flex align-items-center justify-content-center transition-transform hover-scale"
+                  style={{ 
+                      width: "45px", 
+                      height: "45px", 
+                      background: "linear-gradient(135deg, #ff2e63 0%, #9d4edd 100%)",
+                      border: "none",
+                      color: "white",
+                      boxShadow: "0 4px 15px rgba(157, 78, 221, 0.3)"
+                  }}
                   disabled={!text.trim() && !imagePreview}
                 >
                   <Send size={20} />

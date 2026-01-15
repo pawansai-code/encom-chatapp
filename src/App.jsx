@@ -14,9 +14,11 @@ import PageLoader from './components/UI/PageLoader';
 
 const Home = () => {
     return (
-        <div className="d-flex h-100 bg-dark w-100 overflow-hidden rounded-4 border border-secondary border-opacity-25 shadow-2xl glass-effect m-4 mt-2" style={{height: "calc(100vh - 100px)"}}>
-            <ChatsList />
-            <ChatContainer />
+        <div className="flex-grow-1 d-flex overflow-hidden px-4 pb-4 pt-4">
+            <div className="d-flex w-100 h-100 rounded-4 glass-effect overflow-hidden shadow-lg border border-white border-opacity-10">
+                <ChatsList />
+                <ChatContainer />
+            </div>
         </div>
     );
 };
@@ -75,7 +77,7 @@ const App = () => {
   if (isCheckingAuth && !authUser) return <PageLoader />;
   
   return (
-    <div className="d-flex flex-column vh-100 bg-dark">
+    <div className="d-flex flex-column vh-100">
       <Navbar />
       
       <Routes>

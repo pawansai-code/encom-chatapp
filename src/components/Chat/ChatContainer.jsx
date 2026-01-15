@@ -62,28 +62,33 @@ const ChatContainer = () => {
                                          <img
                                             src={selectedUser.profilePic || "https://avatar.iran.liara.run/public/boy"}
                                             alt="profile"
-                                            className="rounded-circle object-fit-cover border border-secondary"
-                                            style={{ width: "28px", height: "28px" }}
+                                            className="rounded-circle object-fit-cover"
+                                            style={{ width: "28px", height: "28px", border: "1px solid rgba(255,255,255,0.2)" }}
                                          />
                                      )}
                                      
                                      <div className={`p-3 rounded-4 ${
                                          isFromMe 
-                                         ? "bg-primary text-light rounded-br-0" 
-                                         : "bg-dark shadow-sm border border-secondary border-opacity-25 text-light rounded-bl-0"
-                                     }`}>
+                                         ? "text-light rounded-br-0" 
+                                         : "text-light rounded-bl-0"
+                                     }`}
+                                     style={{
+                                         background: isFromMe ? "linear-gradient(135deg, #ff2e63 0%, #9d4edd 100%)" : "rgba(30, 41, 59, 0.6)",
+                                         border: isFromMe ? "none" : "1px solid rgba(255, 255, 255, 0.1)",
+                                         boxShadow: isFromMe ? "0 4px 15px rgba(157, 78, 221, 0.3)" : "none"
+                                     }}>
                                          {message.image && (
                                              <img 
                                                 src={message.image} 
                                                 alt="Attachment" 
-                                                className="img-fluid rounded mb-2 border border-secondary border-opacity-25"
-                                                style={{maxHeight: "200px"}}
+                                                className="img-fluid rounded mb-2"
+                                                style={{maxHeight: "200px", border: "1px solid rgba(255,255,255,0.1)"}}
                                              />
                                          )}
                                          {message.text && <p className="mb-0">{message.text}</p>}
                                      </div>
                                 </div>
-                                <span className="text-secondary small opacity-75 ms-1">
+                                <span className="small opacity-75 ms-1" style={{color: "rgba(255,255,255,0.5)"}}>
                                     {format(new Date(message.createdAt), "p")}
                                 </span>
                             </div>

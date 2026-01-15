@@ -111,6 +111,10 @@ const authSlice = createSlice({
             // Logout
             .addCase(logout.fulfilled, (state) => {
                 state.authUser = null;
+            })
+            .addCase(logout.rejected, (state) => {
+                // Force logout on client even if server fails
+                state.authUser = null;
             });
     },
 });

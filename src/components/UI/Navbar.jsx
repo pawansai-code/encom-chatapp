@@ -8,13 +8,19 @@ const Navbar = () => {
     const { authUser } = useSelector(state => state.auth);
 
     return (
-        <nav className="navbar navbar-expand-lg border-bottom border-secondary border-opacity-25 bg-dark bg-opacity-50 backdrop-blur-sm sticky-top px-4 shadow-sm" style={{height: "64px"}}>
+        <nav className="navbar navbar-expand-lg border-bottom border-white border-opacity-10 backdrop-blur-md sticky-top px-4 shadow-sm" style={{height: "80px", background: "rgba(5, 5, 16, 0.7)"}}>
             <div className="container-fluid px-0">
                 <Link to="/" className="navbar-brand d-flex align-items-center gap-2">
-                    <div className="bg-primary bg-opacity-10 p-2 rounded-3">
-                         <MessageSquare size={24} className="text-primary-custom" />
+                    <div className="p-2 rounded-3" style={{ background: "rgba(255, 46, 99, 0.1)" }}>
+                         <MessageSquare size={24} color="#ff2e63" />
                     </div>
-                    <span className="text-light fw-bold">JarvisChat</span>
+                    <span className="fw-bold" style={{ 
+                        fontSize: "24px", 
+                        background: "linear-gradient(90deg, #ff2e63 0%, #ff5757 100%)",
+                        backgroundClip: "text",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent"
+                    }}>JarvisChat</span>
                 </Link>
 
                 <div className="d-flex align-items-center gap-3">
@@ -25,7 +31,23 @@ const Navbar = () => {
                             </span>
                             <button 
                                 onClick={() => dispatch(logout())}
-                                className="btn btn-outline-danger btn-sm d-flex align-items-center gap-2 border-opacity-50"
+                                className="btn btn-sm d-flex align-items-center gap-2"
+                                style={{
+                                    borderColor: "rgba(255, 46, 99, 0.5)",
+                                    color: "#ff2e63",
+                                    borderWidth: "1px",
+                                    borderStyle: "solid",
+                                    background: "transparent",
+                                    transition: "all 0.3s ease"
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = "rgba(255, 46, 99, 0.1)";
+                                    e.currentTarget.style.boxShadow = "0 0 10px rgba(255, 46, 99, 0.2)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = "transparent";
+                                    e.currentTarget.style.boxShadow = "none";
+                                }}
                             >
                                 <LogOut size={16} />
                                 <span className="d-none d-sm-inline">Logout</span>
